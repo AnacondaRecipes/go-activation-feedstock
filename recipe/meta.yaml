@@ -15,16 +15,18 @@ source:
 
 build:
   number: 0
-  run_exports:   # [cross_target_platform == "osx-64"]
-    strong_constrains:   # [cross_target_platform == "osx-64"]
-      - __osx>=10.12    # [cross_target_platform == "osx-64"]
-  run_exports:   # [cross_target_platform == "linux-64" and go_variant_str == "cgo"]
-    strong:   # [cross_target_platform == "linux-64" and go_variant_str == "cgo"]
-      - __glibc >=2.17                    # [cross_target_platform == "linux-64" and go_variant_str == "cgo"]
+  skip: True            # [s390x]
+  run_exports:          # [osx]
+    strong_constrains:  # [osx]
+      - __osx>=10.12    # [osx]
+  run_exports:          # [linux and go_variant_str == "cgo"]
+    strong:             # [linux and go_variant_str == "cgo"]
+      - __glibc >=2.17  # [linux and go_variant_str == "cgo"]
 
 requirements:
   build:
-    - sed  # [osx]
+    - sed        # [osx]
+    - coreutils  # [osx]
   run:
     - go {{ version }}.*
     - _go_select =={{ go_variant_ver }}={{ go_variant_str }}
@@ -34,7 +36,7 @@ test:
     - hello_world.go
 
 about:
-  home: http://golang.org
+  home: https://golang.org
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
@@ -46,10 +48,10 @@ about:
     values are ignored if GOBIN and GOPATH environment variables 
     are set independently by the user.
 
-    Futhermore, this package set the correct GOARCH and GOOS
+    Furthermore, this package set the correct GOARCH and GOOS
     environment variables to enable cross-compilation.
-  doc_url: https://golang.org/doc
-  dev_url: https://go.googlesource.com/go
+  doc_url: https://go.dev/doc
+  dev_url: https://github.com/golang/go
 
 extra:
   feedstock-name: go-activation

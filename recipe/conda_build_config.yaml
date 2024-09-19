@@ -1,24 +1,18 @@
 cross_target_platform:
-  - linux-64                            # [linux]
-  - linux-aarch64                       # [linux]
-  - linux-ppc64le                       # [linux]
-  - osx-64                              # [linux or (osx and x86_64) or (osx and arm64)]
-  - osx-arm64                           # [linux or (osx and x86_64) or (osx and arm64)]
-  - win-64                              # [linux64 or win]
+  - linux-64                            # [linux and x86_64]
+  - linux-aarch64                       # [linux and aarch64]
+  - linux-s390x                         # [linux and s390x]
+  - osx-64                              # [osx and x86_64]
+  - osx-arm64                           # [osx and arm64]
+  - win-64                              # [win and x86_64]
 GOOS:
   - linux                               # [linux]
-  - linux                               # [linux]
-  - linux                               # [linux]
-  - darwin                              # [linux or (osx and x86_64) or (osx and arm64)]
-  - darwin                              # [linux or (osx and x86_64) or (osx and arm64)]
-  - windows                             # [linux64 or win]
+  - darwin                              # [osx]
+  - windows                             # [win]
 GOARCH:
-  - amd64                               # [linux]
-  - arm64                               # [linux]
-  - ppc64le                             # [linux]
-  - amd64                               # [linux or (osx and x86_64) or (osx and arm64)]
-  - arm64                               # [linux or (osx and x86_64) or (osx and arm64)]
-  - amd64                               # [linux64 or win]
+  - amd64                               # [x86_64]
+  - arm64                               # [aarch64 or arm64]
+  - s390x                               # [s390x]
 go_variant_str:
   - cgo
   - nocgo
