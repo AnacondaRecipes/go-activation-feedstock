@@ -17,7 +17,19 @@ test "$(go env GOBIN)" == "$CONDA_PREFIX/bin"
 # Test GOPATH is set to SRC-DIR
 # We cannot use that here though as conda-build checks for
 # the existence of SRC-DIR for an old behaviour change.
-test "$(go env GOPATH)" == "${PWD}/gopath"
+#
+# Resolve GOPATH symlinks. This is particularly an issue in
+# CI on OSX with /var being a symlink to /private/var.
+if [[ "${build_platform:0:3}" == "osx" ]]; then
+  gopath=$(go env GOPATH)
+  if [[ ! -f "${gopath}" ]]; then
+    # readlink doesn't work if the target doesn't exist.
+    mkdir -p "${gopath}"
+  fi
+  test "$(readlink -f ${gopath})" == "${PWD}/gopath"
+else
+  test "$(go env GOPATH)" == "${PWD}/gopath"
+fi
 
 
 # Print diagnostics
