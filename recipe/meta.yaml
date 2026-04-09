@@ -1,4 +1,4 @@
-{% set version = "1.25.8" %}
+{% set version = "1.26.2" %}
 
 {% if cross_target_platform is undefined %}
 {% set cross_target_platform = "foo" %}
@@ -11,7 +11,7 @@ package:
 source:
   # Add a source we don't need so that the bot issues PRs here automatically.
   url: https://dl.google.com/go/go{{ version }}.src.tar.gz
-  sha256: e988d4a2446ac7fe3f6daa089a58e9936a52a381355adec1c8983230a8d6c59e
+  sha256: 2e91ebb6947a96e9436fb2b3926a8802efe63a6d375dffec4f82aa9dbd6fd43b
 
 build:
   number: 0
