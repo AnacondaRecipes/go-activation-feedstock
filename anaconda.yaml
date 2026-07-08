@@ -1,0 +1,21 @@
+anaconda_config_version: 1
+upstream_sources:
+  - github:
+      identifier: golang/go
+      use_max_tag: true
+      include_regex: ^go[\d.]+$
+      from_pattern: ^go(.+)$
+      to_pattern: \1
+    packages:
+      - go-cgo_linux-64
+      - go-cgo_linux-aarch64
+      - go-cgo_linux-s390x
+      - go-cgo_osx-64
+      - go-cgo_osx-arm64
+      - go-cgo_win-64
+      - go-nocgo_linux-64
+      - go-nocgo_linux-aarch64
+      - go-nocgo_linux-s390x
+      - go-nocgo_osx-64
+      - go-nocgo_osx-arm64
+      - go-nocgo_win-64
